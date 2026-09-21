@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>C — Parent Planner</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,sans-serif;background:#F8FAFC;color:#0F172A;line-height:1.5}
+.note{background:#0B3A5B;color:#bae6fd;text-align:center;padding:.4rem;font-size:.75rem}.note a{color:#e0f2fe}
+header{background:#fff;border-bottom:1px solid #e2e8f0}
+header .in{max-width:1100px;margin:0 auto;padding:.8rem 1.25rem;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:.5rem;color:#0B3A5B;text-decoration:none;font-weight:700}.logo{width:36px;height:36px}
+nav a{margin-left:1rem;color:#334155;text-decoration:none;font-size:.9rem}nav a.on{color:#0EA5E9;font-weight:600}
+.wrap{max-width:1100px;margin:0 auto;padding:1.5rem 1.25rem 2.5rem}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}@media(max-width:800px){.hero{grid-template-columns:1fr}}
+h1{color:#0B3A5B;font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.4rem}.muted{color:#64748b}
+.path{display:block;background:#E0F2FE;border:1px solid #bae6fd;border-radius:10px;padding:.9rem 1rem;margin:.4rem 0;text-decoration:none;color:#0B3A5B;font-weight:600}
+.path span{display:block;font-weight:400;font-size:.85rem;color:#0369a1;margin-top:.15rem}
+.trust{display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;font-size:.85rem;color:#64748b;padding:1rem 0;border-bottom:1px solid #e2e8f0;margin-bottom:1.5rem}
+.trust b{color:#059669}
+h2{color:#0B3A5B;font-size:1.1rem;margin:0 0 .9rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.75rem}@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.deal{background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.ph{height:120px}.pill{display:inline-block;margin:.7rem .8rem 0;background:#E0F2FE;color:#0369a1;font-size:.7rem;font-weight:700;padding:.15rem .5rem;border-radius:999px}
+.br{padding:.4rem .8rem 0;font-size:.78rem;color:#64748b}h3{padding:.15rem .8rem;font-size:.92rem;flex:1}
+.pr{padding:.15rem .8rem .4rem}.pr s{color:#94a3b8;margin-right:.35rem}.pr b{color:#0B3A5B}.pr em{color:#059669;font-style:normal;font-size:.8rem;margin-left:.3rem}
+.cta{margin:.2rem .8rem .9rem;display:block;text-align:center;background:#0EA5E9;color:#fff;text-decoration:none;padding:.6rem;border-radius:8px;font-weight:600}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;font-size:.88rem;margin-bottom:1.5rem}
+th,td{padding:.65rem .8rem;border-bottom:1px solid #e2e8f0;text-align:left}th{background:#0B3A5B;color:#fff}
+footer{border-top:1px solid #e2e8f0;padding:1.25rem;text-align:center;color:#64748b;font-size:.85rem}
+.prose{max-width:720px} .prose p{margin:0 0 1rem;color:#334155} .prose h2{margin-top:1.25rem}
+</style></head><body>
+<div class="note"><a href="index.html">← All variants</a> · C Parent Planner (mockup)</div>
+<header><div class="in"><a class="brand" href="#home" onclick="show('home')"><svg class="logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#E8F0EC"/><circle cx="32" cy="32" r="28" fill="#fff" stroke="#3D7A6A" stroke-width="2"/><path d="M20 36c4-10 12-16 20-14 2 6-2 14-8 18-4 2-8 2-12-4z" fill="#3D7A6A"/><circle cx="38" cy="24" r="4" fill="#C45C26"/><path d="M18 40c8 2 16 2 24-2" stroke="#3D7A6A" stroke-width="2" fill="none" stroke-linecap="round"/></svg> Baby Bargains</a>
+<nav>
+<a href="#home" data-nav onclick="show('home')">Deals</a>
+<a href="#guides" data-nav onclick="show('guides')">Guides</a>
+<a href="#article" data-nav onclick="show('article')">Sample</a>
+<a href="#about" data-nav onclick="show('about')">About</a>
+</nav></div></header>
+<main class="wrap">
+<section id="home" data-panel>
+<div class="hero"><div><h1>Find the right gear for less</h1><p class="muted">Compare tracked deals, then click out.</p></div>
+<div>
+<a class="path" href="#">Newborn<span>Bassinets, monitors, feeding</span></a>
+<a class="path" href="#">Travel<span>Strollers, travel cribs</span></a>
+<a class="path" href="#">Feeding<span>Warmers &amp; sanitizers</span></a>
+</div></div>
+<div class="trust"><span><b>✓</b> Tracked links</span><span><b>✓</b> Prices checked</span><span><b>✓</b> No junk 0% hero fills</span></div>
+<h2>Top discounts today</h2>
+<div class="grid"><article class="deal"><div class="ph" style="background:#D4E5DC"></div><span class="pill">Best for travel</span><div class="br">Silver Cross</div><h3>Dune / Reef Bassinet</h3><div class="pr"><s>$349.99</s><b>$99.99</b> <em>71% off</em></div><a class="cta" href="#">Compare price</a></article><article class="deal"><div class="ph" style="background:#C9D9F2"></div><span class="pill">Best for nursery</span><div class="br">Silver Cross</div><h3>Wave Additional Bassinet</h3><div class="pr"><s>$399.99</s><b>$199.99</b> <em>50% off</em></div><a class="cta" href="#">Compare price</a></article><article class="deal"><div class="ph" style="background:#F5E6C8"></div><span class="pill">Best budget play</span><div class="br">Best Buy</div><h3>Costway Foam Play Mat</h3><div class="pr"><s>$129.99</s><b>$69.99</b> <em>46% off</em></div><a class="cta" href="#">Compare price</a></article><article class="deal"><div class="ph" style="background:#E5D4F0"></div><span class="pill">Best for twins</span><div class="br">Silver Cross</div><h3>Jet Double Bundle</h3><div class="pr"><s>$1,109.99</s><b>$799.99</b> <em>28% off</em></div><a class="cta" href="#">Compare price</a></article><article class="deal"><div class="ph" style="background:#F0D4D4"></div><span class="pill">Best budget monitor</span><div class="br">Best Buy</div><h3>FEBFOXS 2K Monitor</h3><div class="pr"><s>$45.99</s><b>$35.99</b> <em>22% off</em></div><a class="cta" href="#">Compare price</a></article><article class="deal"><div class="ph" style="background:#D4E8F0"></div><span class="pill">Best hybrid</span><div class="br">Best Buy</div><h3>Peekababy Monitor</h3><div class="pr"><s>$139.99</s><b>$125.99</b> <em>10% off</em></div><a class="cta" href="#">Compare price</a></article></div>
+<h2>Quick compare</h2>
+<table><thead><tr><th>Product</th><th>Usual</th><th>Sale</th><th>%</th><th></th></tr></thead><tbody><tr><td>Dune / Reef Bassinet</td><td>$349.99</td><td><b>$99.99</b></td><td>71%</td><td><a href="#" style="color:#0EA5E9">Deal</a></td></tr><tr><td>Wave Additional Bassinet</td><td>$399.99</td><td><b>$199.99</b></td><td>50%</td><td><a href="#" style="color:#0EA5E9">Deal</a></td></tr><tr><td>Costway Foam Play Mat</td><td>$129.99</td><td><b>$69.99</b></td><td>46%</td><td><a href="#" style="color:#0EA5E9">Deal</a></td></tr><tr><td>Jet Double Bundle</td><td>$1,109.99</td><td><b>$799.99</b></td><td>28%</td><td><a href="#" style="color:#0EA5E9">Deal</a></td></tr></tbody></table>
+</section>
+<section id="guides" data-panel hidden class="prose">
+<h1>Buying guides</h1>
+<p><a href="#article" onclick="show('article')" style="color:#0EA5E9;font-weight:600">Video baby monitors</a> — hybrid vs budget</p>
+<p>Stroller accessories · Bassinets · Travel cribs</p>
+</section>
+<section id="article" data-panel hidden class="prose">
+<h1>Best video baby monitors on sale</h1>
+<h2>Best hybrid</h2><p><strong>Peekababy</strong> — $125.99 <a href="#" style="color:#0EA5E9">Compare price</a></p>
+<h2>Best budget Wi-Fi</h2><p><strong>FEBFOXS</strong> — $35.99 <a href="#" style="color:#0EA5E9">Compare price</a></p>
+</section>
+<section id="about" data-panel hidden class="prose"><h1>About</h1><p>Decision helper for baby deals. Affiliate commission possible.</p></section>
+</main>
+<footer>Mockup C · Parent Planner</footer>
+<script>
+function show(id){document.querySelectorAll('[data-panel]').forEach(p=>p.hidden=p.id!==id);document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));history.replaceState(null,'','#'+id);}
+window.addEventListener('hashchange',()=>show((location.hash||'#home').slice(1)));
+document.addEventListener('DOMContentLoaded',()=>show((location.hash||'#home').slice(1)));
+</script></body></html>

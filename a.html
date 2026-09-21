@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>A — Editorial Trust</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,sans-serif;background:#FAFAF8;color:#1A1A1A;line-height:1.55}
+.serif{font-family:Georgia,serif}.note{background:#1A1A1A;color:#ccc;text-align:center;padding:.4rem;font-size:.75rem}.note a{color:#eee}
+header{background:#fff;border-bottom:1px solid #E8E6E1;position:sticky;top:0;z-index:5}
+header .in{max-width:1100px;margin:0 auto;padding:.75rem 1.25rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.brand{display:flex;align-items:center;gap:.5rem;font-weight:600;text-decoration:none;color:inherit}.logo{width:36px;height:36px}
+nav a{margin-left:1rem;text-decoration:none;color:#1A1A1A;font-size:.92rem}nav a.on{color:#3D7A6A;font-weight:600}
+.wrap{max-width:1100px;margin:0 auto;padding:1.5rem 1.25rem 3rem}
+h1{font-size:clamp(1.6rem,3vw,2.2rem);margin:.5rem 0}.muted{color:#5C5C5C}
+.chips span{display:inline-block;border:1px solid #E8E6E1;background:#fff;border-radius:999px;padding:.3rem .8rem;margin:.25rem .25rem 1rem 0;font-size:.85rem;color:#5C5C5C}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.deal{background:#fff;border:1px solid #E8E6E1;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.ph{height:140px;display:flex;align-items:flex-end;padding:.6rem;font-size:.75rem;font-weight:600}
+.row{padding:.75rem 1rem 0}.badge{background:#C45C26;color:#fff;font-size:.7rem;font-weight:700;padding:.15rem .45rem;border-radius:999px}
+.br{padding:.35rem 1rem 0;font-size:.8rem;color:#5C5C5C}h3{padding:.2rem 1rem;font-size:.95rem;font-weight:600;flex:1;font-family:system-ui}
+.pr{padding:.2rem 1rem .8rem}.pr s{color:#999;margin-right:.5rem}.pr b{color:#3D7A6A;font-size:1.1rem}
+.cta{margin:0 1rem 1rem;display:block;text-align:center;background:#3D7A6A;color:#fff;text-decoration:none;padding:.65rem;border-radius:8px;font-weight:600}
+.gcard{display:block;background:#fff;border:1px solid #E8E6E1;border-radius:10px;padding:1rem;margin:.5rem 0;text-decoration:none;color:inherit}
+.prose{max-width:680px} .prose p{margin:0 0 1rem}
+.pick{display:grid;grid-template-columns:100px 1fr;gap:1rem;border:1px solid #E8E6E1;border-radius:12px;padding:1rem;margin:1rem 0;background:#fff}
+footer{border-top:1px solid #E8E6E1;padding:1.25rem;text-align:center;color:#5C5C5C;font-size:.85rem;background:#fff}
+</style></head><body>
+<div class="note"><a href="index.html">← All variants</a> · A Editorial Trust (mockup)</div>
+<header><div class="in"><a class="brand" href="#home" data-nav onclick="show('home')"><svg class="logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#E8F0EC"/><circle cx="32" cy="32" r="28" fill="#fff" stroke="#3D7A6A" stroke-width="2"/><path d="M20 36c4-10 12-16 20-14 2 6-2 14-8 18-4 2-8 2-12-4z" fill="#3D7A6A"/><circle cx="38" cy="24" r="4" fill="#C45C26"/><path d="M18 40c8 2 16 2 24-2" stroke="#3D7A6A" stroke-width="2" fill="none" stroke-linecap="round"/></svg><span class="serif">Baby Bargains</span></a>
+<nav>
+<a href="#home" data-nav onclick="show('home')">Home</a>
+<a href="#guides" data-nav onclick="show('guides')">Guides</a>
+<a href="#article" data-nav onclick="show('article')">Sample guide</a>
+<a href="#about" data-nav onclick="show('about')">About</a>
+</nav></div></header>
+<main class="wrap">
+<section id="home" data-panel>
+<p class="muted" style="font-size:.85rem;margin-bottom:1rem">We may earn a commission when you buy through our links.</p>
+<h1 class="serif">Today’s curated baby deals</h1>
+<p class="muted">Hand-checked discounts with tracked links.</p>
+<div class="chips"><span>Strollers</span><span>Sleep</span><span>Feeding</span><span>Monitors</span></div>
+<div class="grid"><article class="deal"><div class="ph" style="background:#D4E5DC"><span>Nursery</span></div><div class="row"><span class="badge">71% off</span></div><div class="br">Silver Cross</div><h3>Dune / Reef Bassinet</h3><div class="pr"><s>$349.99</s><b>$99.99</b></div><a class="cta" href="#">See deal (mock)</a></article><article class="deal"><div class="ph" style="background:#C9D9F2"><span>Nursery</span></div><div class="row"><span class="badge">50% off</span></div><div class="br">Silver Cross</div><h3>Wave Additional Bassinet</h3><div class="pr"><s>$399.99</s><b>$199.99</b></div><a class="cta" href="#">See deal (mock)</a></article><article class="deal"><div class="ph" style="background:#F5E6C8"><span>Toys</span></div><div class="row"><span class="badge">46% off</span></div><div class="br">Best Buy</div><h3>Costway Foam Play Mat</h3><div class="pr"><s>$129.99</s><b>$69.99</b></div><a class="cta" href="#">See deal (mock)</a></article><article class="deal"><div class="ph" style="background:#E5D4F0"><span>Gear</span></div><div class="row"><span class="badge">28% off</span></div><div class="br">Silver Cross</div><h3>Jet Double Bundle</h3><div class="pr"><s>$1,109.99</s><b>$799.99</b></div><a class="cta" href="#">See deal (mock)</a></article><article class="deal"><div class="ph" style="background:#F0D4D4"><span>Health</span></div><div class="row"><span class="badge">22% off</span></div><div class="br">Best Buy</div><h3>FEBFOXS 2K Monitor</h3><div class="pr"><s>$45.99</s><b>$35.99</b></div><a class="cta" href="#">See deal (mock)</a></article><article class="deal"><div class="ph" style="background:#D4E8F0"><span>Health</span></div><div class="row"><span class="badge">10% off</span></div><div class="br">Best Buy</div><h3>Peekababy Monitor</h3><div class="pr"><s>$139.99</s><b>$125.99</b></div><a class="cta" href="#">See deal (mock)</a></article></div>
+<h2 class="serif" style="margin:2rem 0 1rem">Guides worth reading</h2>
+<a class="gcard" href="#article" onclick="show('article')"><strong>Video baby monitors</strong><br><span class="muted">Peekababy, FEBFOXS, Sense-U</span></a>
+</section>
+<section id="guides" data-panel hidden>
+<h1 class="serif">Buying guides</h1>
+<p class="muted">Tracked picks from the deal table.</p>
+<a class="gcard" href="#article" onclick="show('article')"><strong>Video baby monitors</strong></a>
+<div class="gcard"><strong>Bassinets</strong></div>
+<div class="gcard"><strong>Travel cribs</strong></div>
+</section>
+<section id="article" data-panel hidden class="prose">
+<h1 class="serif">Best video baby monitors on sale</h1>
+<p>Only monitors on the curated table with tracked links.</p>
+<div class="pick"><div class="ph" style="background:#D4E8F0;height:100px;border-radius:8px"></div><div><span class="badge">Our pick</span><h3>Peekababy Monitor</h3><div class="pr"><s>$139.99</s><b>$125.99</b></div><a class="cta" style="display:inline-block;margin:0;padding:.5rem 1rem" href="#">See deal (mock)</a></div></div>
+<div class="pick"><div class="ph" style="background:#F0D4D4;height:100px;border-radius:8px"></div><div><span class="badge">Budget</span><h3>FEBFOXS 2K</h3><div class="pr"><s>$45.99</s><b>$35.99</b></div><a class="cta" style="display:inline-block;margin:0;padding:.5rem 1rem" href="#">See deal (mock)</a></div></div>
+</section>
+<section id="about" data-panel hidden class="prose">
+<h1 class="serif">About</h1>
+<p>We curate tracked baby-gear discounts. Commission possible via our links.</p>
+</section>
+</main>
+<footer>Mockup A · Editorial Trust</footer>
+<script>
+function show(id){document.querySelectorAll('[data-panel]').forEach(p=>p.hidden=p.id!==id);document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));history.replaceState(null,'','#'+id);}
+window.addEventListener('hashchange',()=>show((location.hash||'#home').slice(1)));
+document.addEventListener('DOMContentLoaded',()=>show((location.hash||'#home').slice(1)));
+</script></body></html>

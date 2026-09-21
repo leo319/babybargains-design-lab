@@ -1,2 +1,5 @@
-# babybargains-design-lab
-BabyBargains design mockups A/B/C — temporary preview for Nick
+# BabyBargains design lab
+
+https://leo319.github.io/babybargains-design-lab/
+
+Or on the site: https://baby-bargains.com/design-lab/
