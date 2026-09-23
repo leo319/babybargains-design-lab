@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parent Planner homepage — pick a direction · Baby Bargains</title>
+<meta name="description" content="Three Parent Planner homepage mocks for Baby Bargains: editorial magazine, spreadsheet decision tool, shopping-app feed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Mono:wght@500&family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+:root{--navy:#0B3A5B;--sky:#0EA5E9;--sky-700:#0369A1;--sky-100:#E0F2FE;--bg:#F8FAFC;--muted:#64748B;--border:#E2E8F0;--ink:#0F172A}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:8px}
+.hdr{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.hdr-in,.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.hdr-in{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:16.5px}
+.brand svg{width:36px;height:36px}
+.hdr small{font-size:13px;color:var(--muted);font-weight:500}
+.intro{padding:56px 0 36px;max-width:760px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-700);margin-bottom:12px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(34px,5vw,52px);line-height:1.05;letter-spacing:-.025em;color:var(--navy);margin-bottom:16px}
+.lead{font-size:18px;color:#475569}
+.tokens{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tok{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px 0 6px;border:1px solid var(--border);border-radius:999px;background:#fff;font-size:12.5px;font-weight:600;color:#334155}
+.tok i{width:20px;height:20px;border-radius:50%;border:1px solid rgba(15,23,42,.1)}
+.list{display:grid;gap:28px;padding-bottom:40px}
+.mock{display:grid;grid-template-columns:1.35fr 1fr;background:#fff;border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 30px -18px rgba(11,58,91,.25);transition:box-shadow .2s,border-color .2s}
+.mock:hover{border-color:#BAE6FD;box-shadow:0 24px 50px -24px rgba(11,58,91,.4)}
+.shots{position:relative;background:linear-gradient(160deg,#EEF4FA,#DCE8F3);padding:28px 28px 0;display:flex;align-items:flex-end;min-height:340px;overflow:hidden}
+.shots .d{width:100%;border-radius:12px 12px 0 0;box-shadow:0 20px 40px -18px rgba(11,58,91,.45);border:1px solid rgba(15,23,42,.08);border-bottom:0}
+.shots .m{position:absolute;right:22px;bottom:-40px;width:128px;border-radius:18px;border:5px solid #0F172A;box-shadow:0 20px 40px -12px rgba(11,58,91,.5)}
+.info{padding:32px 32px 30px;display:flex;flex-direction:column}
+.num{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.info h2{font-size:28px;line-height:1.15;letter-spacing:-.02em;color:var(--navy);margin-bottom:12px}
+.m1 h2{font-family:Fraunces,Georgia,serif;font-weight:600}
+.m2 h2{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:500;font-size:24px;letter-spacing:-.01em}
+.m3 h2{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-weight:800;letter-spacing:-.03em}
+.info p{color:#475569;font-size:15.5px;margin-bottom:16px}
+.info ul{list-style:none;display:grid;gap:8px;margin-bottom:24px}
+.info li{display:flex;gap:10px;font-size:14.5px;color:#334155}
+.info li::before{content:"";flex:none;width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--sky-100) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230369A1' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/11px no-repeat}
+.open{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;border-radius:12px;background:var(--navy);color:#fff;font-weight:700;font-size:15.5px;transition:background .15s}
+.mock:hover .open{background:var(--sky)}
+.open svg{width:18px;height:18px}
+.best{display:inline-block;align-self:flex-start;font-size:12px;font-weight:700;color:var(--sky-700);background:var(--sky-100);padding:4px 10px;border-radius:999px;margin-bottom:14px}
+.foot{border-top:1px solid var(--border);padding:22px 0 40px;font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:900px){
+  .mock{grid-template-columns:1fr}
+  .shots{min-height:0;padding:20px 20px 0}
+  .shots .m{width:92px;right:14px;bottom:-30px;border-width:4px;border-radius:14px}
+  .info{padding:24px 22px 24px}
+}
+@media (max-width:520px){
+  .hdr small{display:none}
+  .intro{padding:36px 0 24px}
+  .lead{font-size:16.5px}
+}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#E8F0EC"/><circle cx="32" cy="32" r="28" fill="#fff" stroke="#3D7A6A" stroke-width="2"/><path d="M20 36c4-10 12-16 20-14 2 6-2 14-8 18-4 2-8 2-12-4z" fill="#3D7A6A"/><circle cx="38" cy="24" r="4" fill="#C45C26"/><path d="M18 40c8 2 16 2 24-2" stroke="#3D7A6A" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      Baby Bargains
+    </a>
+    <small>Design lab · Parent Planner homepage</small>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <p class="eyebrow">Pick a direction</p>
+    <h1>Three ways to build the Parent Planner homepage</h1>
+    <p class="lead">Same brand, tokens, and sample deals — three deliberately different page architectures. Open each one on desktop and on your phone, then pick by page shape rather than colors.</p>
+    <div class="tokens" aria-label="Shared brand tokens">
+      <span class="tok"><i style="background:#0B3A5B"></i>Navy #0B3A5B</span>
+      <span class="tok"><i style="background:#0EA5E9"></i>Sky #0EA5E9</span>
+      <span class="tok"><i style="background:#F8FAFC"></i>BG #F8FAFC</span>
+      <span class="tok"><i style="background:#64748B"></i>Muted #64748B</span>
+      <span class="tok"><i style="background:#E2E8F0"></i>Border #E2E8F0</span>
+    </div>
+  </section>
+
+  <div class="list">
+    <a class="mock m1" href="mock-1-editorial.html">
+      <div class="shots">
+        <img class="d" src="shots/mock-1-editorial-desktop.jpg" alt="Mock 1 desktop: full-bleed navy hero with serif headline and a lead-deal cover card" width="1200" height="750" loading="lazy">
+        <img class="m" src="shots/mock-1-editorial-mobile.jpg" alt="" width="390" height="844" loading="lazy">
+      </div>
+      <div class="info">
+        <p class="num">Mock 1</p>
+        <h2>Editorial magazine</h2>
+        <span class="best">Best if we lead with trust &amp; storytelling</span>
+        <p>Wirecutter-style front page. Big serif voice, one lead deal, then a curated edit.</p>
+        <ul>
+          <li>Full-bleed navy hero, serif H1, “Today’s lead” cover card</li>
+          <li>Need chips, 4-point trust strip</li>
+          <li>Magazine grid (1 large + 2 stacked), deal grid, guides</li>
+          <li>Compare table is secondary, lower on the page</li>
+        </ul>
+        <span class="open">Open mock 1 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <a class="mock m2" href="mock-2-compare.html">
+      <div class="shots">
+        <img class="d" src="shots/mock-2-compare-desktop.jpg" alt="Mock 2 desktop: dense zebra comparison table with a filter and sort rail, no hero" width="1200" height="750" loading="lazy">
+        <img class="m" src="shots/mock-2-compare-mobile.jpg" alt="" width="390" height="844" loading="lazy">
+      </div>
+      <div class="info">
+        <p class="num">Mock 2</p>
+        <h2>Spreadsheet decision tool</h2>
+        <span class="best">Best if parents come to compare numbers</span>
+        <p>No marketing hero. The comparison table <em>is</em> the homepage.</p>
+        <ul>
+          <li>Dense zebra Quick compare table above the fold</li>
+          <li>Filter / sort rail with counts, KPI strip, category tabs</li>
+          <li>Deals as compact horizontal list rows, not cards</li>
+          <li>Mobile: collapsible filters, sticky product column</li>
+        </ul>
+        <span class="open">Open mock 2 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <a class="mock m3" href="mock-3-feed.html">
+      <div class="shots">
+        <img class="d" src="shots/mock-3-feed-desktop.jpg" alt="Mock 3 desktop: search-first header, promo strip, immersive featured deal and category rail" width="1200" height="750" loading="lazy">
+        <img class="m" src="shots/mock-3-feed-mobile.jpg" alt="" width="390" height="844" loading="lazy">
+      </div>
+      <div class="info">
+        <p class="num">Mock 3</p>
+        <h2>Shopping-app feed</h2>
+        <span class="best">Best for mobile-first, thumb-driven browsing</span>
+        <p>Feels like a native shopping app: search first, scroll a feed, build a compare tray.</p>
+        <ul>
+          <li>Sticky search, one-line promo, immersive featured card</li>
+          <li>Left category rail + tall feed cards with save / compare</li>
+          <li>Floating “Open compare” bar opens a bottom sheet</li>
+          <li>Mobile bottom tab bar</li>
+        </ul>
+        <span class="open">Open mock 3 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+  </div>
+
+  <footer class="foot">
+    <span>Self-contained HTML mocks · no WordPress · sample data only, CTAs link to #</span>
+    <span>baby-bargains.com design lab</span>
+  </footer>
+</main>
+</body>
+</html>

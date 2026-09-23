@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Parent Planner — Shopping-app feed (Mock 3) · Baby Bargains</title>
+<meta name="description" content="Baby Bargains Parent Planner homepage mock 3: shopping-app feed layout.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+:root{
+  --navy:#0B3A5B;--navy-900:#072A42;--sky:#0EA5E9;--sky-700:#0369A1;--sky-600:#0284C7;--sky-50:#F0F9FF;--sky-100:#E0F2FE;--sky-200:#BAE6FD;
+  --bg:#F8FAFC;--ink:#0F172A;--muted:#64748B;--border:#E2E8F0;--white:#fff;--save:#047857;--heart:#E11D48;
+  --font:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --r-lg:24px;--r-md:18px;
+  --shadow:0 1px 2px rgba(15,23,42,.04),0 4px 14px -6px rgba(15,23,42,.08);
+  --shadow-lg:0 24px 48px -20px rgba(11,58,91,.35);
+}
+html{scroll-padding-top:150px}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;padding-bottom:110px}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px;border-radius:10px}
+
+.mockbar{background:var(--navy-900);color:#94C5E3;font-size:12px;text-align:center;padding:6px 12px}
+.mockbar a{color:#fff;font-weight:700}
+.mockbar a:hover{text-decoration:underline}
+
+/* Sticky header with search */
+.hdr{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.hdr-in{max-width:1320px;margin:0 auto;padding:12px 24px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--navy);font-weight:800;font-size:17px;letter-spacing:-.02em;white-space:nowrap}
+.brand svg{width:38px;height:38px;flex:none}
+.search{display:flex;align-items:center;gap:12px;height:50px;padding:0 6px 0 18px;border-radius:999px;background:#F1F5F9;border:1.5px solid transparent;max-width:720px;width:100%;justify-self:center;transition:background .15s,border-color .15s,box-shadow .15s}
+.search:focus-within{background:#fff;border-color:var(--sky);box-shadow:0 0 0 4px rgba(14,165,233,.15)}
+.search>svg{width:20px;height:20px;color:var(--muted);flex:none}
+.search input{flex:1;min-width:0;border:0;background:transparent;outline:0;font-size:15.5px;font-weight:500}
+.search input::placeholder{color:#94A3B8}
+.search .filt{flex:none;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border:0;border-radius:999px;background:#fff;color:var(--navy);font-weight:700;font-size:13.5px;box-shadow:0 1px 2px rgba(15,23,42,.08)}
+.search .filt svg{width:16px;height:16px}
+.hdr-right{display:flex;align-items:center;gap:6px}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{padding:10px 14px;border-radius:999px;font-weight:600;font-size:14.5px;color:#334155}
+.nav a:hover{background:#F1F5F9}
+.nav a[aria-current]{color:var(--sky-700)}
+.icon-btn{position:relative;display:inline-grid;place-items:center;width:46px;height:46px;border-radius:999px;border:0;background:transparent;color:var(--navy)}
+.icon-btn:hover{background:#F1F5F9}
+.icon-btn svg{width:22px;height:22px}
+.badge{position:absolute;top:5px;right:4px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--sky);color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;border:2px solid #fff}
+.burger{display:none;width:46px;height:46px;border-radius:14px;border:1px solid var(--border);background:#fff;color:var(--navy);place-items:center}
+.burger svg{width:22px;height:22px}
+.burger .x{display:none}
+.burger[aria-expanded="true"] .x{display:block}
+.burger[aria-expanded="true"] .l{display:none}
+
+/* One-line promo */
+.promo{background:linear-gradient(90deg,var(--sky-700),var(--sky) 55%,#38BDF8);color:#fff}
+.promo a{max-width:1320px;margin:0 auto;padding:0 24px;height:40px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden}
+.promo svg{width:16px;height:16px;flex:none}
+.promo b{font-weight:800}
+.promo span{overflow:hidden;text-overflow:ellipsis}
+.promo u{text-decoration:none;border-bottom:1.5px solid rgba(255,255,255,.6);flex:none}
+
+/* Shell */
+.shell{max-width:1320px;margin:0 auto;padding:24px 24px 40px;display:grid;grid-template-columns:232px minmax(0,1fr);gap:32px;align-items:start}
+
+/* Category rail */
+.rail{position:sticky;top:132px;display:grid;gap:18px}
+.rail h2{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 12px;margin-bottom:6px}
+.cats{list-style:none;display:grid;gap:2px}
+.cats a{display:flex;align-items:center;gap:12px;white-space:nowrap;min-height:46px;padding:0 12px;border-radius:14px;font-weight:600;color:#334155}
+.cats a:hover{background:#fff;box-shadow:var(--shadow)}
+.cats a .ci{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#F1F5F9;color:var(--navy);flex:none}
+.cats a .ci svg{width:18px;height:18px}
+.cats a .n{margin-left:auto;font-size:12.5px;color:var(--muted);font-weight:600}
+.cats a[aria-current]{background:var(--navy);color:#fff}
+.cats a[aria-current] .ci{background:rgba(255,255,255,.14);color:#7DD3FC}
+.cats a[aria-current] .n{color:#94C5E3}
+.rail-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-md);padding:16px;box-shadow:var(--shadow)}
+.rail-card b{display:block;color:var(--navy);font-size:14.5px;margin-bottom:4px}
+.rail-card p{color:var(--muted);font-size:13px;margin-bottom:12px}
+.rail-card a{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13.5px;color:var(--sky-700)}
+
+/* Feed column */
+.feed-col{min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.qchips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -2px;padding:2px}
+.qchips::-webkit-scrollbar{display:none}
+.qchip{flex:none;display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-weight:600;font-size:14px;color:#334155;white-space:nowrap}
+.qchip:hover{border-color:#CBD5E1}
+.qchip[aria-pressed="true"]{background:var(--sky-100);border-color:var(--sky);color:var(--sky-700)}
+
+/* Featured immersive card */
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:440px;border-radius:28px;overflow:hidden;background:radial-gradient(120% 120% at 85% 20%,#EEF6F1 0%,#D2E6DB 45%,#B7D5C5 100%);box-shadow:var(--shadow-lg);isolation:isolate}
+.hero-copy{position:relative;z-index:2;padding:40px 0 36px 40px;display:flex;flex-direction:column;justify-content:center}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.pill{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;font-size:12.5px;font-weight:800;letter-spacing:.02em}
+.pill svg{width:14px;height:14px}
+.pill.dark{background:var(--navy);color:#fff}
+.pill.sky{background:var(--sky);color:#fff}
+.pill.soft{background:rgba(255,255,255,.75);color:var(--navy)}
+.hero .brandline{font-weight:700;color:#3D6B5A;font-size:14.5px;margin-bottom:4px}
+.hero h1{font-size:clamp(32px,4vw,52px);line-height:1.02;letter-spacing:-.035em;font-weight:800;color:var(--navy);margin-bottom:18px}
+.hero .price{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin-bottom:24px}
+.hero .price strong{font-size:44px;font-weight:800;letter-spacing:-.03em;color:var(--navy);line-height:1}
+.hero .price s{font-size:18px;color:#5B7A6E;font-weight:600}
+.hero .price em{font-style:normal;font-weight:800;color:var(--save);background:rgba(255,255,255,.8);padding:4px 10px;border-radius:999px;font-size:13.5px}
+.hero-actions{display:flex;gap:10px;align-items:center}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:56px;white-space:nowrap;padding:0 30px;border-radius:999px;background:var(--sky);color:#fff;font-weight:800;font-size:16.5px;box-shadow:0 10px 24px -10px rgba(14,165,233,.8);transition:background .15s,transform .15s}
+.cta:hover{background:var(--sky-600);transform:translateY(-1px)}
+.cta svg{width:18px;height:18px}
+.round{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:999px;background:#fff;border:0;color:var(--navy);box-shadow:0 4px 14px -6px rgba(15,23,42,.25)}
+.round svg{width:22px;height:22px}
+.round.heart{color:var(--heart)}
+.hero-art{position:relative}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-meta{position:absolute;right:20px;bottom:20px;z-index:2;display:flex;gap:8px;align-items:center}
+.dots{display:flex;gap:6px;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.7)}
+.dots i{width:7px;height:7px;border-radius:99px;background:rgba(11,58,91,.25)}
+.dots i:first-child{width:20px;background:var(--navy)}
+
+/* Feed */
+.feed-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}
+.feed-h h2{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.feed-h h2 span{color:var(--muted);font-weight:600;font-size:15px;letter-spacing:0;margin-left:6px}
+.sortbtn{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--border);background:#fff;font-weight:600;font-size:14px;color:#334155}
+.sortbtn svg{width:16px;height:16px}
+.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(226,232,240,.8);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.card .media{position:relative}
+.card .art{position:relative;aspect-ratio:4/5;display:block}
+.card .art svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .5s}
+.card:hover .art svg{transform:scale(1.05)}
+.card .off{position:absolute;top:14px;left:14px;height:30px;padding:0 11px;border-radius:999px;background:var(--navy);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
+.card .fav{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,.9);border:0;display:grid;place-items:center;color:var(--navy);box-shadow:0 2px 8px -2px rgba(15,23,42,.2)}
+.card .fav svg{width:20px;height:20px}
+.card .fav[aria-pressed="true"]{color:var(--heart)}
+.card .fav[aria-pressed="true"] svg{fill:currentColor}
+.card .add{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 13px;border-radius:999px;border:0;background:rgba(255,255,255,.92);color:var(--navy);font-weight:700;font-size:13px;box-shadow:0 2px 8px -2px rgba(15,23,42,.2)}
+.card .add svg{width:15px;height:15px}
+.card .add[aria-pressed="true"]{background:var(--navy);color:#fff}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.card .rt{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:600}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 9px;border-radius:999px;background:var(--sky-100);color:var(--sky-700);font-size:11.5px;font-weight:700;white-space:nowrap}
+.card h3{font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--navy);line-height:1.3;margin:6px 0 10px}
+.card .pr{display:flex;align-items:baseline;gap:8px;margin-top:auto;margin-bottom:14px}
+.card .pr strong{font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+.card .pr s{color:#94A3B8;font-size:14px;font-weight:500}
+.card .pr em{margin-left:auto;font-style:normal;font-weight:700;color:var(--save);font-size:13px}
+.card .go{display:flex;align-items:center;justify-content:center;height:46px;border-radius:14px;background:var(--sky-50);color:var(--sky-700);font-weight:800;font-size:14.5px;transition:background .15s,color .15s}
+.card .go:hover{background:var(--sky);color:#fff}
+.bg-dune{background:linear-gradient(170deg,#EAF4EE,#C7DED1)}
+.bg-wave{background:linear-gradient(170deg,#EDF2F9,#C9D8EB)}
+.bg-mat{background:linear-gradient(170deg,#FDF6E7,#F2DDB3)}
+.bg-jet{background:linear-gradient(170deg,#F3EFF9,#D5C8EA)}
+.bg-feb{background:linear-gradient(170deg,#FCEFEF,#ECCDCD)}
+.bg-peek{background:linear-gradient(170deg,#EAF6FA,#C2E1EC)}
+
+.card.story{background:var(--navy);color:#fff;border:0;justify-content:space-between;padding:26px}
+.card.story .k{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7DD3FC}
+.card.story h3{color:#fff;font-size:26px;line-height:1.15;letter-spacing:-.02em;margin:12px 0 10px}
+.card.story p{color:#BFD3E3;font-size:14.5px}
+.card.story .ill{margin:18px 0;height:150px;border-radius:18px;background:rgba(255,255,255,.06);position:relative;overflow:hidden}
+.card.story .ill svg{position:absolute;inset:0;width:100%;height:100%}
+.card.story .go{background:#fff;color:var(--navy)}
+.card.story .go:hover{background:var(--sky);color:#fff}
+
+/* Guides scroller */
+.guides{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.guides::-webkit-scrollbar{display:none}
+.guide{scroll-snap-align:start;display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:var(--r-md);padding:14px;box-shadow:var(--shadow)}
+.guide:hover{border-color:var(--sky-200)}
+.guide .gi{flex:none;width:64px;height:64px;border-radius:14px;overflow:hidden;position:relative}
+.guide .gi svg{position:absolute;inset:0;width:100%;height:100%}
+.guide b{display:block;color:var(--navy);font-size:15px;line-height:1.3}
+.guide span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+
+.footer{max-width:1320px;margin:0 auto;padding:8px 24px 24px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+.footer nav{display:flex;gap:18px}
+.footer a:hover{color:var(--sky-700)}
+
+/* Floating compare bar */
+.cbar{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:14px;padding:8px 8px 8px 10px;border-radius:999px;background:var(--navy);color:#fff;box-shadow:0 18px 40px -12px rgba(7,42,66,.6),0 0 0 1px rgba(255,255,255,.06);white-space:nowrap}
+.stackthumbs{display:flex}
+.stackthumbs i{width:38px;height:38px;border-radius:50%;border:2.5px solid var(--navy);margin-left:-12px;overflow:hidden;position:relative}
+.stackthumbs i:first-child{margin-left:0}
+.stackthumbs svg{position:absolute;inset:0;width:100%;height:100%}
+.cbar-txt{line-height:1.2}
+.cbar-txt b{display:block;font-size:14.5px}
+.cbar-txt small{color:#94C5E3;font-size:12.5px;font-weight:600}
+.cbar button{height:46px;padding:0 22px;border-radius:999px;border:0;background:var(--sky);color:#fff;font-weight:800;font-size:14.5px}
+.cbar button:hover{background:var(--sky-600)}
+
+/* Compare sheet */
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(7,42,66,.45);opacity:0;pointer-events:none;transition:opacity .2s}
+.sheet{position:fixed;left:50%;bottom:0;z-index:90;width:min(880px,100%);transform:translate(-50%,105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -20px 50px -20px rgba(7,42,66,.4);padding:10px 24px calc(24px + env(safe-area-inset-bottom))}
+.open-cmp .scrim{opacity:1;pointer-events:auto}
+.open-cmp .sheet{transform:translate(-50%,0)}
+.grab{width:44px;height:5px;border-radius:9px;background:#CBD5E1;margin:0 auto 14px}
+.sheet-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.sheet-h h2{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.sheet-h button{width:44px;height:44px;border-radius:999px;border:0;background:#F1F5F9;display:grid;place-items:center;color:var(--navy)}
+.sheet-h button svg{width:20px;height:20px}
+.cgrid{display:grid;grid-template-columns:120px repeat(3,minmax(0,1fr));border:1px solid var(--border);border-radius:18px;overflow:hidden;font-size:14px}
+.cgrid>div{padding:12px 14px;border-bottom:1px solid var(--border)}
+.cgrid>div:nth-last-child(-n+4){border-bottom:0}
+.cgrid .lab{background:var(--bg);color:var(--muted);font-weight:700;font-size:12.5px;display:flex;align-items:center}
+.cgrid .top{display:flex;flex-direction:column;gap:8px}
+.cgrid .top i{display:block;height:74px;border-radius:12px;position:relative;overflow:hidden}
+.cgrid .top svg{position:absolute;inset:0;width:100%;height:100%}
+.cgrid .top b{color:var(--navy);font-size:14px;line-height:1.25}
+.cgrid .big{font-weight:800;font-size:18px;color:var(--navy)}
+.cgrid .win{color:var(--save);font-weight:800}
+.cgrid a{display:flex;align-items:center;justify-content:center;height:40px;border-radius:12px;background:var(--sky);color:#fff;font-weight:800;font-size:13.5px}
+
+/* Mobile tab bar */
+.tabbar{display:none}
+
+@media (max-width:1120px){
+  .feed{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav{display:none}
+}
+@media (max-width:900px){
+  body{padding-bottom:170px}
+  .hdr-in{grid-template-columns:auto 1fr auto;gap:10px 12px;padding:10px 16px}
+  .search{grid-column:1/-1;grid-row:2;max-width:none;height:48px}
+  .hdr-right .icon-btn{display:none}
+  .burger{display:inline-grid}
+  .hdr-right{justify-self:end}
+  .nav.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;padding:8px 16px 16px;border-bottom:1px solid var(--border);box-shadow:0 20px 30px -20px rgba(15,23,42,.3)}
+  .nav.open a{min-height:52px;display:flex;align-items:center;border-radius:0;border-bottom:1px solid var(--border);font-size:16px}
+  .nav.open a:last-child{border-bottom:0}
+  .promo a{padding:0 16px;font-size:13px;justify-content:flex-start}
+  .shell{grid-template-columns:minmax(0,1fr);padding:14px 16px 24px;gap:16px}
+  .rail{position:static;display:block}
+  .rail h2,.rail-card{display:none}
+  .cats{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:2px 16px}
+  .cats::-webkit-scrollbar{display:none}
+  .cats a{flex:none;min-height:44px;padding:0 14px 0 6px;gap:8px;border-radius:999px;background:#fff;border:1px solid var(--border)}
+  .cats a .ci{width:32px;height:32px;border-radius:999px}
+  .cats a .n{display:none}
+  .hero{grid-template-columns:1fr;min-height:0;border-radius:24px}
+  .hero-art{order:-1;height:250px}
+  .hero-copy{padding:4px 22px 24px}
+  .hero .price strong{font-size:36px}
+  .hero-meta{top:14px;right:14px;bottom:auto}
+  .cta{flex:1;padding:0 18px}
+  .feed{gap:12px}
+  .card .body{padding:12px 12px 14px}
+  .card h3{font-size:15px}
+  .card .pr strong{font-size:18px}
+  .card .pr em{display:none}
+  .card .rt .tag{display:none}
+  .card .add span{display:none}
+  .card .add{width:40px;padding:0;justify-content:center}
+  .card .go{height:44px;font-size:13.5px}
+  .card.story{grid-column:1/-1;padding:22px}
+  .card.story .ill{height:120px}
+  .cbar{bottom:calc(76px + env(safe-area-inset-bottom));width:calc(100% - 24px);justify-content:space-between}
+  .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:65;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+  .tabbar a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;font-size:11px;font-weight:700;color:var(--muted);border-radius:12px}
+  .tabbar a svg{width:23px;height:23px}
+  .tabbar a[aria-current]{color:var(--sky-700)}
+  .tabbar .badge{top:3px;right:calc(50% - 22px)}
+  .cgrid{grid-template-columns:84px repeat(3,minmax(0,1fr));font-size:13px}
+  .cgrid>div{padding:10px 8px}
+  .cgrid .top i{height:54px}
+  .cgrid .top b{font-size:12.5px}
+  .cgrid .big{font-size:15px}
+  .sheet{padding:10px 14px calc(18px + env(safe-area-inset-bottom))}
+}
+@media (max-width:420px){
+  .brand{font-size:16px}
+  .cbar-txt small{display:none}
+  .cbar button{padding:0 16px}
+}
+</style>
+</head>
+<body>
+<!-- product art sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="jet-unit">
+      <path d="M150 238L204 172M268 238L238 172" stroke="#1E293B" stroke-width="7" stroke-linecap="round"/>
+      <path d="M248 178L292 86" stroke="#1E293B" stroke-width="8" stroke-linecap="round"/>
+      <path d="M282 82h26" stroke="#0F172A" stroke-width="12" stroke-linecap="round"/>
+      <path d="M146 170H266C266 198 246 214 220 214H178C158 214 146 198 146 170Z" fill="#1E293B"/>
+      <path d="M136 172A96 96 0 0 1 232 76V172Z" fill="#475569"/>
+      <path d="M160 172A72 72 0 0 1 232 100" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="3"/>
+      <path d="M184 172A48 48 0 0 1 232 124" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="3"/>
+      <path d="M150 204L130 226" stroke="#1E293B" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="150" cy="238" r="20" fill="#0F172A"/><circle cx="150" cy="238" r="8" fill="#94A3B8"/>
+      <circle cx="268" cy="236" r="24" fill="#0F172A"/><circle cx="268" cy="236" r="9" fill="#94A3B8"/>
+    </g>
+  </defs>
+  <symbol id="img-dune" viewBox="0 0 400 300">
+    <ellipse cx="200" cy="262" rx="130" ry="11" fill="#0B3A5B" opacity=".1"/>
+    <path d="M140 258L262 186M260 258L138 186" stroke="#475569" stroke-width="7" stroke-linecap="round"/>
+    <path d="M126 258h30M244 258h30" stroke="#334155" stroke-width="9" stroke-linecap="round"/>
+    <path d="M92 126H308C308 172 280 198 238 198H162C120 198 92 172 92 126Z" fill="#EFE8DA"/>
+    <path d="M97 150H303C300 160 296 168 290 176H110C104 168 100 160 97 150Z" fill="#E3D9C6"/>
+    <rect x="84" y="116" width="232" height="16" rx="8" fill="#D5C9B1"/>
+    <path d="M100 124A68 68 0 0 1 236 124Z" fill="#2F6B73"/>
+    <path d="M122 124A46 46 0 0 1 214 124M146 124A22 22 0 0 1 190 124" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="3"/>
+    <path d="M238 110h58a6 6 0 0 1 0 12h-58z" fill="#fff"/>
+    <path d="M250 110c10-8 30-8 40 0" fill="#F1F5F9"/>
+  </symbol>
+  <symbol id="img-wave" viewBox="0 0 400 300">
+    <ellipse cx="200" cy="252" rx="142" ry="10" fill="#0B3A5B" opacity=".1"/>
+    <path d="M140 150C140 78 250 78 250 150" fill="none" stroke="#1E293B" stroke-width="9" stroke-linecap="round"/>
+    <path d="M78 150H322C322 206 290 240 240 240H160C110 240 78 206 78 150Z" fill="#334E68"/>
+    <path d="M84 178H316C312 190 306 200 298 208H102C94 200 88 190 84 178Z" fill="#2B4259"/>
+    <rect x="70" y="140" width="260" height="18" rx="9" fill="#243B53"/>
+    <path d="M198 148A64 64 0 0 1 326 148Z" fill="#627D98"/>
+    <path d="M218 148A44 44 0 0 1 306 148M240 148A22 22 0 0 1 284 148" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="3"/>
+    <path d="M86 130h104a6 6 0 0 1 0 12H86a6 6 0 0 1 0-12z" fill="#F1F5F9"/>
+    <circle cx="124" cy="196" r="6" fill="#9FB3C8"/>
+  </symbol>
+  <symbol id="img-mat" viewBox="0 0 400 300">
+    <ellipse cx="200" cy="256" rx="152" ry="12" fill="#0B3A5B" opacity=".08"/>
+    <polygon points="60,166 200,236 200,250 60,180" fill="#CBD5E1"/>
+    <polygon points="200,236 340,166 340,180 200,250" fill="#94A3B8"/>
+    <g stroke="#fff" stroke-width="2.5" stroke-linejoin="round">
+      <polygon points="200,96 246.7,119.3 200,142.7 153.3,119.3" fill="#BAE6FD"/>
+      <polygon points="153.3,119.3 200,142.7 153.3,166 106.7,142.7" fill="#FED7AA"/>
+      <polygon points="106.7,142.7 153.3,166 106.7,189.3 60,166" fill="#BBF7D0"/>
+      <polygon points="246.7,119.3 293.3,142.7 246.7,166 200,142.7" fill="#FEF08A"/>
+      <polygon points="200,142.7 246.7,166 200,189.3 153.3,166" fill="#FBCFE8"/>
+      <polygon points="153.3,166 200,189.3 153.3,212.6 106.7,189.3" fill="#BAE6FD"/>
+      <polygon points="293.3,142.7 340,166 293.3,189.3 246.7,166" fill="#BBF7D0"/>
+      <polygon points="246.7,166 293.3,189.3 246.7,212.7 200,189.3" fill="#BAE6FD"/>
+      <polygon points="200,189.3 246.7,212.7 200,236 153.3,212.6" fill="#FED7AA"/>
+    </g>
+    <polygon points="146,132 170,144 146,156 122,144" fill="#FDE047"/>
+    <polygon points="122,144 146,156 146,182 122,170" fill="#EAB308"/>
+    <polygon points="146,156 170,144 170,170 146,182" fill="#CA8A04"/>
+    <circle cx="262" cy="150" r="21" fill="#F87171"/>
+    <path d="M241 150a21 21 0 0 0 42 0" fill="#EF4444"/>
+    <ellipse cx="255" cy="141" rx="7" ry="4" fill="#fff" opacity=".6"/>
+  </symbol>
+  <symbol id="img-jet" viewBox="0 0 400 300">
+    <ellipse cx="210" cy="262" rx="132" ry="10" fill="#0B3A5B" opacity=".1"/>
+    <use href="#jet-unit" transform="translate(28 -14)" opacity=".45"/>
+    <use href="#jet-unit"/>
+  </symbol>
+  <symbol id="img-febfoxs" viewBox="0 0 400 300">
+    <ellipse cx="206" cy="256" rx="142" ry="10" fill="#0B3A5B" opacity=".1"/>
+    <rect x="92" y="222" width="60" height="26" rx="10" fill="#CBD5E1"/>
+    <rect x="80" y="108" width="84" height="116" rx="28" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>
+    <circle cx="122" cy="152" r="26" fill="#0F172A"/><circle cx="122" cy="152" r="13" fill="#334155"/>
+    <circle cx="115" cy="145" r="4.5" fill="#fff" opacity=".75"/>
+    <circle cx="122" cy="198" r="4" fill="#22C55E"/>
+    <path d="M214 240l-10 14M308 240l10 14" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+    <rect x="186" y="116" width="150" height="124" rx="18" fill="#1E293B"/>
+    <rect x="197" y="127" width="128" height="82" rx="9" fill="#0B3A5B"/>
+    <path d="M296 138a11 11 0 1 0 9 17a9 9 0 1 1-9-17z" fill="#FDE68A"/>
+    <circle cx="218" cy="146" r="2" fill="#fff" opacity=".7"/><circle cx="238" cy="138" r="1.6" fill="#fff" opacity=".6"/>
+    <circle cx="244" cy="176" r="12" fill="#FCD9B6"/>
+    <path d="M226 200c14-20 58-22 82 0z" fill="#7DD3FC"/>
+    <circle cx="240" cy="224" r="5" fill="#475569"/><circle cx="261" cy="224" r="5" fill="#475569"/><circle cx="282" cy="224" r="5" fill="#0EA5E9"/>
+  </symbol>
+  <symbol id="img-peek" viewBox="0 0 400 300">
+    <ellipse cx="206" cy="256" rx="140" ry="10" fill="#0B3A5B" opacity=".1"/>
+    <path d="M150 164C150 200 172 208 172 238" fill="none" stroke="#CBD5E1" stroke-width="13" stroke-linecap="round"/>
+    <ellipse cx="172" cy="242" rx="48" ry="12" fill="#E2E8F0"/>
+    <circle cx="150" cy="118" r="48" fill="#fff" stroke="#CBD5E1" stroke-width="2"/>
+    <circle cx="150" cy="118" r="28" fill="#1E293B"/><circle cx="150" cy="118" r="14" fill="#0369A1"/>
+    <circle cx="143" cy="111" r="4.5" fill="#fff" opacity=".75"/>
+    <rect x="238" y="88" width="88" height="164" rx="18" fill="#0F172A"/>
+    <rect x="245" y="100" width="74" height="140" rx="11" fill="#F0F9FF"/>
+    <rect x="245" y="100" width="74" height="72" rx="11" fill="#0B3A5B"/>
+    <circle cx="272" cy="140" r="9" fill="#FCD9B6"/>
+    <path d="M258 162c10-14 42-15 54 0z" fill="#BAE6FD"/>
+    <rect x="253" y="182" width="58" height="8" rx="4" fill="#BAE6FD"/>
+    <rect x="253" y="196" width="40" height="8" rx="4" fill="#E2E8F0"/>
+    <rect x="253" y="210" width="50" height="8" rx="4" fill="#E2E8F0"/>
+  </symbol>
+</svg>
+<!-- /product art sprite -->
+<div class="mockbar">Parent Planner · Mock 3 of 3 — Shopping-app feed · <a href="index.html">All mocks</a></div>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#top" aria-label="Baby Bargains home">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#E8F0EC"/><circle cx="32" cy="32" r="28" fill="#fff" stroke="#3D7A6A" stroke-width="2"/><path d="M20 36c4-10 12-16 20-14 2 6-2 14-8 18-4 2-8 2-12-4z" fill="#3D7A6A"/><circle cx="38" cy="24" r="4" fill="#C45C26"/><path d="M18 40c8 2 16 2 24-2" stroke="#3D7A6A" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      Baby Bargains
+    </a>
+    <form class="search" role="search" action="#" onsubmit="return false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <label class="sr-only" for="q">Search deals</label>
+      <input id="q" type="search" placeholder="Search bassinets, strollers, monitors…" autocomplete="off">
+      <button class="filt" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filters</button>
+    </form>
+    <div class="hdr-right">
+      <nav class="nav" id="site-nav" aria-label="Primary">
+        <a href="#feed" aria-current="page">Deals</a>
+        <a href="#" data-open-compare>Compare</a>
+        <a href="#guides">Guides</a>
+        <a href="#about">About</a>
+      </nav>
+      <a class="icon-btn" href="#" aria-label="Saved deals, 1 item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 5.6 5 5 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg><span class="badge">1</span></a>
+      <a class="icon-btn" href="#" data-open-compare aria-label="Compare, 3 items"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/></svg><span class="badge">3</span></a>
+      <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+        <svg class="l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="promo"><a href="#top"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><span><b>71% off</b> Silver Cross Dune / Reef Bassinet — now $99.99</span><u>Shop now</u></a></div>
+
+<div class="shell" id="top">
+  <aside class="rail" aria-label="Categories">
+    <div>
+      <h2>Browse</h2>
+      <ul class="cats">
+        <li><a href="#feed" aria-current="page"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></span>For you<span class="n">6</span></a></li>
+        <li><a href="#feed"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M5 21c1.5-4 4-6 7-6s5.5 2 7 6"/></svg></span>Newborn<span class="n">3</span></a></li>
+        <li><a href="#feed"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M4 5h2l2 10h10l2-7H8"/></svg></span>Travel<span class="n">2</span></a></li>
+        <li><a href="#feed"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6M10 3v3l-2 3v11a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V9l-2-3V3"/></svg></span>Feeding<span class="n">0</span></a></li>
+        <li><a href="#feed"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 11h18v7H3zM5 18v3M19 18v3M6 11V6h12v5"/></svg></span>Nursery<span class="n">2</span></a></li>
+        <li><a href="#feed"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8l8-4 8 4-8 4zM4 8v8l8 4 8-4V8M12 12v8"/></svg></span>Toys<span class="n">1</span></a></li>
+        <li><a href="#feed"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>Monitors<span class="n">2</span></a></li>
+      </ul>
+    </div>
+    <div class="rail-card">
+      <b>Compare side by side</b>
+      <p>Tap <strong>+</strong> on any deal to line it up against up to 3 others.</p>
+      <a href="#" data-open-compare>Open compare (3) →</a>
+    </div>
+  </aside>
+
+  <main class="feed-col">
+    <div class="qchips" role="group" aria-label="Quick filters">
+      <button class="qchip" type="button" aria-pressed="true">All deals</button>
+      <button class="qchip" type="button" aria-pressed="false">40%+ off</button>
+      <button class="qchip" type="button" aria-pressed="false">Under $100</button>
+      <button class="qchip" type="button" aria-pressed="false">Silver Cross</button>
+      <button class="qchip" type="button" aria-pressed="false">Best Buy</button>
+      <button class="qchip" type="button" aria-pressed="false">Twins</button>
+    </div>
+
+    <article class="hero" aria-labelledby="hero-h">
+      <div class="hero-copy">
+        <div class="pills">
+          <span class="pill dark"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>Deal of the day</span>
+          <span class="pill sky">71% off</span>
+          <span class="pill soft">Best for travel</span>
+        </div>
+        <p class="brandline">Silver Cross</p>
+        <h1 id="hero-h">Dune / Reef Bassinet</h1>
+        <div class="price"><strong>$99.99</strong><s>$349.99</s><em>You save $250</em></div>
+        <div class="hero-actions">
+          <a class="cta" href="#">Compare price <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button class="round heart" type="button" aria-label="Save deal" aria-pressed="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 5.6 5 5 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg></button>
+          <button class="round" type="button" aria-label="In compare" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></button>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><svg viewBox="40 20 330 270" preserveAspectRatio="xMidYMid meet"><use href="#img-dune" width="400" height="300"/></svg></div>
+      <div class="hero-meta"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+    </article>
+
+    <section id="feed" aria-labelledby="feed-h">
+      <div class="feed-h">
+        <h2 id="feed-h">More deals<span>5 today</span></h2>
+        <button class="sortbtn" type="button">Biggest discount <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      </div>
+      <div class="feed" style="margin-top:14px">
+        <article class="card">
+          <div class="media"><a class="art bg-wave" href="#" aria-label="Wave Additional Bassinet"><svg viewBox="50 30 300 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><use href="#img-wave" width="400" height="300"/></svg></a>
+          <span class="off">−50%</span>
+          <button class="fav" type="button" aria-label="Save Wave Additional Bassinet" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 5.6 5 5 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg></button>
+          <button class="add" type="button" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Comparing</span></button></div>
+          <div class="body">
+            <div class="rt"><span>Silver Cross</span><span class="tag">Nursery</span></div>
+            <h3><a href="#">Wave Additional Bassinet</a></h3>
+            <div class="pr"><strong>$199.99</strong><s>$399.99</s><em>Save $200</em></div>
+            <a class="go" href="#">Compare price</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="media"><a class="art bg-mat" href="#" aria-label="Costway Foam Play Mat"><svg viewBox="50 40 300 240" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><use href="#img-mat" width="400" height="300"/></svg></a>
+          <span class="off">−46%</span>
+          <button class="fav" type="button" aria-label="Save Costway Foam Play Mat" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 5.6 5 5 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg></button>
+          <button class="add" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Compare</span></button></div>
+          <div class="body">
+            <div class="rt"><span>Best Buy</span><span class="tag">Budget play</span></div>
+            <h3><a href="#">Costway Foam Play Mat</a></h3>
+            <div class="pr"><strong>$69.99</strong><s>$129.99</s><em>Save $60</em></div>
+            <a class="go" href="#">Compare price</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="media"><a class="art bg-jet" href="#" aria-label="Jet Double Bundle"><svg viewBox="80 40 280 240" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><use href="#img-jet" width="400" height="300"/></svg></a>
+          <span class="off">−28%</span>
+          <button class="fav" type="button" aria-label="Save Jet Double Bundle" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 5.6 5 5 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg></button>
+          <button class="add" type="button" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Comparing</span></button></div>
+          <div class="body">
+            <div class="rt"><span>Silver Cross</span><span class="tag">Twins</span></div>
+            <h3><a href="#">Jet Double Bundle</a></h3>
+            <div class="pr"><strong>$799.99</strong><s>$1,109.99</s><em>Save $310</em></div>
+            <a class="go" href="#">Compare price</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="media"><a class="art bg-feb" href="#" aria-label="FEBFOXS 2K Monitor"><svg viewBox="60 60 300 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><use href="#img-febfoxs" width="400" height="300"/></svg></a>
+          <span class="off">−22%</span>
+          <button class="fav" type="button" aria-label="Save FEBFOXS 2K Monitor" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 5.6 5 5 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg></button>
+          <button class="add" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Compare</span></button></div>
+          <div class="body">
+            <div class="rt"><span>Best Buy</span><span class="tag">Budget monitor</span></div>
+            <h3><a href="#">FEBFOXS 2K Monitor</a></h3>
+            <div class="pr"><strong>$35.99</strong><s>$45.99</s><em>Save $10</em></div>
+            <a class="go" href="#">Compare price</a>
+          </div>
+        </article>
+        <article class="card">
+          <div class="media"><a class="art bg-peek" href="#" aria-label="Peekababy Monitor"><svg viewBox="70 50 290 230" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><use href="#img-peek" width="400" height="300"/></svg></a>
+          <span class="off">−10%</span>
+          <button class="fav" type="button" aria-label="Save Peekababy Monitor" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 5.6 5 5 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg></button>
+          <button class="add" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Compare</span></button></div>
+          <div class="body">
+            <div class="rt"><span>Best Buy</span><span class="tag">Hybrid</span></div>
+            <h3><a href="#">Peekababy Monitor</a></h3>
+            <div class="pr"><strong>$125.99</strong><s>$139.99</s><em>Save $14</em></div>
+            <a class="go" href="#">Compare price</a>
+          </div>
+        </article>
+        <article class="card story">
+          <div>
+            <p class="k">Guide · 9 min read</p>
+            <h3>Which video monitor should you actually buy?</h3>
+            <p>Wi-Fi vs. dedicated screen, and why the $35.99 pick beats pricier ones for most nurseries.</p>
+          </div>
+          <div class="ill" aria-hidden="true"><svg viewBox="60 70 300 200" preserveAspectRatio="xMidYMid meet"><use href="#img-febfoxs" width="400" height="300"/></svg></div>
+          <a class="go" href="#guides">Read the guide</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="guides" aria-labelledby="guides-h">
+      <div class="feed-h"><h2 id="guides-h">Read before you buy</h2></div>
+      <div class="guides" style="margin-top:14px">
+        <a class="guide" href="#"><span class="gi bg-feb"><svg viewBox="60 60 300 220" aria-hidden="true"><use href="#img-febfoxs" width="400" height="300"/></svg></span><span><b>Video baby monitors</b><span>Updated Sept. 21</span></span></a>
+        <a class="guide" href="#"><span class="gi bg-dune"><svg viewBox="60 40 290 240" aria-hidden="true"><use href="#img-dune" width="400" height="300"/></svg></span><span><b>Best bassinets on sale</b><span>Travel vs. nursery</span></span></a>
+        <a class="guide" href="#"><span class="gi bg-mat"><svg viewBox="50 40 300 240" aria-hidden="true"><use href="#img-mat" width="400" height="300"/></svg></span><span><b>Bottle warmers &amp; sanitizers</b><span>Feeding starters under $100</span></span></a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="footer" id="about">
+  <span>© 2026 Baby Bargains · We may earn a commission from retailer links · Design mock — not the live WordPress site</span>
+  <nav aria-label="Footer"><a href="#feed">Deals</a><a href="#guides">Guides</a><a href="#about">About</a></nav>
+</footer>
+
+<div class="cbar" role="region" aria-label="Compare tray">
+  <span class="stackthumbs" aria-hidden="true">
+    <i class="bg-dune"><svg viewBox="60 40 290 240"><use href="#img-dune" width="400" height="300"/></svg></i>
+    <i class="bg-wave"><svg viewBox="60 60 280 220"><use href="#img-wave" width="400" height="300"/></svg></i>
+    <i class="bg-jet"><svg viewBox="90 50 260 230"><use href="#img-jet" width="400" height="300"/></svg></i>
+  </span>
+  <span class="cbar-txt"><b>3 in compare</b><small>Save up to $760 total</small></span>
+  <button type="button" data-open-compare>Open compare</button>
+</div>
+
+<div class="scrim" data-close-compare></div>
+<section class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h">
+  <div class="grab" aria-hidden="true"></div>
+  <div class="sheet-h">
+    <h2 id="sheet-h">Compare 3 deals</h2>
+    <button type="button" data-close-compare aria-label="Close compare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="cgrid">
+    <div class="lab">Deal</div>
+    <div class="top"><i class="bg-dune"><svg viewBox="40 20 330 270"><use href="#img-dune" width="400" height="300"/></svg></i><b>Dune / Reef Bassinet</b></div>
+    <div class="top"><i class="bg-wave"><svg viewBox="50 30 300 250"><use href="#img-wave" width="400" height="300"/></svg></i><b>Wave Additional Bassinet</b></div>
+    <div class="top"><i class="bg-jet"><svg viewBox="80 40 280 240"><use href="#img-jet" width="400" height="300"/></svg></i><b>Jet Double Bundle</b></div>
+    <div class="lab">Sale</div><div class="big">$99.99</div><div class="big">$199.99</div><div class="big">$799.99</div>
+    <div class="lab">Usual</div><div>$349.99</div><div>$399.99</div><div>$1,109.99</div>
+    <div class="lab">% off</div><div class="win">71% · best</div><div>50%</div><div>28%</div>
+    <div class="lab">Best for</div><div>Travel</div><div>Nursery</div><div>Twins</div>
+    <div class="lab">Retailer</div><div>Silver Cross</div><div>Silver Cross</div><div>Silver Cross</div>
+    <div class="lab"></div><div><a href="#">View deal</a></div><div><a href="#">View deal</a></div><div><a href="#">View deal</a></div>
+  </div>
+</section>
+
+<nav class="tabbar" aria-label="App tabs">
+  <a href="#top" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a href="#q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Search</a>
+  <a href="#" data-open-compare><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/></svg>Compare<span class="badge">3</span></a>
+  <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9.2-9A5 5 0 0 1 12 5.6 5 5 0 0 1 21.2 11C19 15.6 12 20 12 20z"/></svg>Saved</a>
+  <a href="#guides"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M8 7h7"/></svg>Guides</a>
+</nav>
+
+<script>
+(function(){
+  var b=document.querySelector('.burger'),n=document.getElementById('site-nav'),d=document.documentElement;
+  b.addEventListener('click',function(){
+    var o=n.classList.toggle('open');
+    b.setAttribute('aria-expanded',o);
+    b.setAttribute('aria-label',o?'Close menu':'Open menu');
+  });
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-open-compare]')){e.preventDefault();d.classList.add('open-cmp');n.classList.remove('open');b.setAttribute('aria-expanded','false');}
+    else if(e.target.closest('[data-close-compare]')){d.classList.remove('open-cmp');}
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')d.classList.remove('open-cmp');});
+})();
+</script>
+</body>
+</html>
