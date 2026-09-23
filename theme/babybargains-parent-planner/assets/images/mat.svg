@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="800" height="600">
+  <defs><linearGradient id="bg" x1="0.33" y1="0" x2="0.67" y2="1"><stop offset="0" stop-color="#FCF4E2"/><stop offset="1" stop-color="#F4E1BC"/></linearGradient></defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <ellipse cx="200" cy="256" rx="152" ry="12" fill="#0B3A5B" opacity=".08"/>
+  <polygon points="60,166 200,236 200,250 60,180" fill="#CBD5E1"/>
+  <polygon points="200,236 340,166 340,180 200,250" fill="#94A3B8"/>
+  <g stroke="#fff" stroke-width="2.5" stroke-linejoin="round">
+    <polygon points="200,96 246.7,119.3 200,142.7 153.3,119.3" fill="#BAE6FD"/>
+    <polygon points="153.3,119.3 200,142.7 153.3,166 106.7,142.7" fill="#FED7AA"/>
+    <polygon points="106.7,142.7 153.3,166 106.7,189.3 60,166" fill="#BBF7D0"/>
+    <polygon points="246.7,119.3 293.3,142.7 246.7,166 200,142.7" fill="#FEF08A"/>
+    <polygon points="200,142.7 246.7,166 200,189.3 153.3,166" fill="#FBCFE8"/>
+    <polygon points="153.3,166 200,189.3 153.3,212.6 106.7,189.3" fill="#BAE6FD"/>
+    <polygon points="293.3,142.7 340,166 293.3,189.3 246.7,166" fill="#BBF7D0"/>
+    <polygon points="246.7,166 293.3,189.3 246.7,212.7 200,189.3" fill="#BAE6FD"/>
+    <polygon points="200,189.3 246.7,212.7 200,236 153.3,212.6" fill="#FED7AA"/>
+  </g>
+  <polygon points="146,132 170,144 146,156 122,144" fill="#FDE047"/>
+  <polygon points="122,144 146,156 146,182 122,170" fill="#EAB308"/>
+  <polygon points="146,156 170,144 170,170 146,182" fill="#CA8A04"/>
+  <circle cx="262" cy="150" r="21" fill="#F87171"/>
+  <path d="M241 150a21 21 0 0 0 42 0" fill="#EF4444"/>
+  <ellipse cx="255" cy="141" rx="7" ry="4" fill="#fff" opacity=".6"/>
+  </svg>

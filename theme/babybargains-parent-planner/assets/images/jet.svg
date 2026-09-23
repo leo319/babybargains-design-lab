@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="800" height="600">
+  <defs><linearGradient id="bg" x1="0.33" y1="0" x2="0.67" y2="1"><stop offset="0" stop-color="#EEE9F6"/><stop offset="1" stop-color="#D9CEEC"/></linearGradient><g id="jet-unit">
+      <path d="M150 238L204 172M268 238L238 172" stroke="#1E293B" stroke-width="7" stroke-linecap="round"/>
+      <path d="M248 178L292 86" stroke="#1E293B" stroke-width="8" stroke-linecap="round"/>
+      <path d="M282 82h26" stroke="#0F172A" stroke-width="12" stroke-linecap="round"/>
+      <path d="M146 170H266C266 198 246 214 220 214H178C158 214 146 198 146 170Z" fill="#1E293B"/>
+      <path d="M136 172A96 96 0 0 1 232 76V172Z" fill="#475569"/>
+      <path d="M160 172A72 72 0 0 1 232 100" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="3"/>
+      <path d="M184 172A48 48 0 0 1 232 124" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="3"/>
+      <path d="M150 204L130 226" stroke="#1E293B" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="150" cy="238" r="20" fill="#0F172A"/><circle cx="150" cy="238" r="8" fill="#94A3B8"/>
+      <circle cx="268" cy="236" r="24" fill="#0F172A"/><circle cx="268" cy="236" r="9" fill="#94A3B8"/>
+    </g></defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <ellipse cx="210" cy="262" rx="132" ry="10" fill="#0B3A5B" opacity=".1"/>
+  <use href="#jet-unit" transform="translate(28 -14)" opacity=".45"/>
+  <use href="#jet-unit"/>
+  </svg>

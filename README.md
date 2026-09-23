@@ -24,3 +24,7 @@ Self-contained HTML (inline CSS, tiny JS, no build step) in [`parent-planner/`](
 - **raw.githack** (works without Pages; shows a one-click interstitial):
   `https://raw.githack.com/leo319/babybargains-design-lab/main/parent-planner/index.html`
 - jsDelivr (`cdn.jsdelivr.net/gh/...`) serves `.html` as `text/plain`, so it shows source rather than the page.
+
+## Parent Planner block theme (Mock 1)
+
+An installable WordPress block theme that implements Mock 1 lives in [`theme/babybargains-parent-planner/`](theme/babybargains-parent-planner/). See its [README](theme/babybargains-parent-planner/README.md) for how to zip it, upload it to the Atomic site, activate it, and set up the front page.
