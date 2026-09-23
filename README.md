@@ -19,7 +19,8 @@ Self-contained HTML (inline CSS, tiny JS, no build step) in [`parent-planner/`](
 
 - **GitHub Pages** (once enabled: Settings → Pages → Deploy from a branch → `main` / root):
   `https://leo319.github.io/babybargains-design-lab/parent-planner/`
-- **jsDelivr** (works without Pages; use a branch name or commit SHA):
-  `https://cdn.jsdelivr.net/gh/leo319/babybargains-design-lab@main/parent-planner/index.html`
-- **htmlpreview**:
+- **htmlpreview** (works without Pages):
   `https://htmlpreview.github.io/?https://raw.githubusercontent.com/leo319/babybargains-design-lab/main/parent-planner/index.html`
+- **raw.githack** (works without Pages; shows a one-click interstitial):
+  `https://raw.githack.com/leo319/babybargains-design-lab/main/parent-planner/index.html`
+- jsDelivr (`cdn.jsdelivr.net/gh/...`) serves `.html` as `text/plain`, so it shows source rather than the page.
