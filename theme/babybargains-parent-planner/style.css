@@ -94,6 +94,13 @@ body {
 	z-index: 50;
 }
 
+/* Below 600px the admin bar scrolls away instead of staying fixed. */
+@media (max-width: 600px) {
+	.wp-site-blocks > header.wp-block-template-part {
+		top: 0;
+	}
+}
+
 .pp-header {
 	background: rgba(255, 255, 255, .94);
 	-webkit-backdrop-filter: saturate(1.4) blur(10px);
@@ -128,7 +135,7 @@ body {
 	height: 42px;
 }
 
-.pp-brand-text > * {
+body .pp-brand-text > * {
 	margin: 0;
 }
 
@@ -148,6 +155,7 @@ body {
 .pp-brand-text .pp-brand-tag {
 	font-family: var(--pp-serif);
 	font-size: 13.5px;
+	font-style: italic;
 	font-weight: 500;
 	line-height: 1.2;
 	color: var(--pp-muted);
@@ -291,8 +299,8 @@ body {
 	padding: 76px 0 132px;
 }
 
-.pp-hero-grid > *,
-.pp-hero-copy > * {
+body .pp-hero-grid > *,
+body .pp-hero-copy > * {
 	margin-block: 0;
 }
 
@@ -366,7 +374,7 @@ body {
 	color: #94A3B8;
 }
 
-.pp-byline p {
+body .pp-byline p {
 	margin: 0;
 }
 
@@ -417,8 +425,8 @@ body {
 	box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .45), 0 0 0 1px rgba(255, 255, 255, .06);
 }
 
-.pp-cover > *,
-.pp-cover-body > * {
+body .pp-cover > *,
+body .pp-cover-body > * {
 	margin-block: 0;
 }
 
@@ -714,7 +722,7 @@ body {
 	box-shadow: var(--pp-shadow-md);
 }
 
-.is-style-pp-card > * {
+body .is-style-pp-card > * {
 	margin-block: 0;
 }
 
@@ -761,7 +769,7 @@ body {
 	padding: 20px 22px 22px;
 }
 
-.pp-card-body > * {
+body .pp-card-body > * {
 	margin-block: 0;
 }
 
@@ -782,7 +790,7 @@ body {
 	gap: 6px 12px;
 }
 
-.pp-price > p {
+body .pp-price > p {
 	margin: 0;
 }
 
@@ -875,8 +883,8 @@ body {
 	gap: 28px;
 }
 
-.pp-mag > *,
-.pp-stack > * {
+body .pp-mag > *,
+body .pp-stack > * {
 	margin-block: 0;
 }
 
@@ -963,7 +971,7 @@ body {
 	list-style: none;
 }
 
-.pp-grid-3 > * {
+body .pp-grid-3 > * {
 	margin-block: 0;
 }
 
@@ -974,7 +982,7 @@ body {
 	color: var(--pp-muted);
 }
 
-.pp-meta > p {
+body .pp-meta > p {
 	margin: 0;
 }
 
@@ -1171,7 +1179,7 @@ body:not(.editor-styles-wrapper) .pp-guide h3 a::after {
 	color: var(--pp-muted);
 }
 
-.pp-guide-meta p {
+body .pp-guide-meta p {
 	margin: 0;
 }
 
@@ -1193,8 +1201,8 @@ body:not(.editor-styles-wrapper) .pp-guide h3 a::after {
 	background: linear-gradient(120deg, #E0F2FE 0%, #F0F9FF 60%, #fff 100%);
 }
 
-.pp-letter > *,
-.pp-letter > * > * {
+body .pp-letter > *,
+body .pp-letter > * > * {
 	margin-block: 0;
 }
 
@@ -1232,9 +1240,9 @@ body:not(.editor-styles-wrapper) .pp-guide h3 a::after {
 	padding: 56px 0 36px;
 }
 
-.pp-foot-grid > *,
-.pp-foot-brand > *,
-.pp-foot-col > * {
+body .pp-foot-grid > *,
+body .pp-foot-brand > *,
+body .pp-foot-col > * {
 	margin-block: 0;
 }
 
@@ -1294,7 +1302,7 @@ body:not(.editor-styles-wrapper) .pp-guide h3 a::after {
 	font-size: 13.5px;
 }
 
-.pp-legal p {
+body .pp-legal p {
 	margin: 0;
 }
 
@@ -1310,7 +1318,7 @@ body:not(.editor-styles-wrapper) .pp-guide h3 a::after {
 	margin-bottom: 32px;
 }
 
-.pp-page-head > * {
+body .pp-page-head > * {
 	margin-block: 0 12px;
 }
 
@@ -1320,7 +1328,7 @@ body:not(.editor-styles-wrapper) .pp-guide h3 a::after {
 	color: var(--pp-muted);
 }
 
-.pp-post-byline > * {
+body .pp-post-byline > * {
 	margin: 0;
 }
 
@@ -1343,7 +1351,7 @@ body:not(.editor-styles-wrapper) .pp-guide h3 a::after {
 	margin-bottom: 30px;
 }
 
-.pp-archive-head > * {
+body .pp-archive-head > * {
 	margin-block: 0;
 }
 
