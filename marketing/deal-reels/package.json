@@ -1,0 +1,16 @@
+{
+  "name": "baby-bargains-deal-reels",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "preview": "hyperframes preview",
+    "check": "hyperframes check --at 1,3.2,5.7,8.2,10.7,13,15",
+    "render": "hyperframes render --quality looks --workers 2 --output reel.mp4"
+  },
+  "devDependencies": {
+    "hyperframes": "0.8.77"
+  }
+}
