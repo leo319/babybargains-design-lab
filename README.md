@@ -28,3 +28,7 @@ Self-contained HTML (inline CSS, tiny JS, no build step) in [`parent-planner/`](
 ## Parent Planner block theme (Mock 1)
 
 An installable WordPress block theme that implements Mock 1 lives in [`theme/babybargains-parent-planner/`](theme/babybargains-parent-planner/). See its [README](theme/babybargains-parent-planner/README.md) for how to zip it, upload it to the Atomic site, activate it, and set up the front page.
+
+## Reusable Instagram deal Reels
+
+The [Baby Bargains deal Reel template](marketing/deal-reels/) contains a 16-second vertical HyperFrames composition, editable deal data, sample product images, music, and preview/render instructions. Start there to create the next category-specific deal video.
